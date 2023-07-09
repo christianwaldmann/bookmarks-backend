@@ -30,9 +30,10 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path('api/admin', admin.site.urls),
-    path('api/doc', schema_view.with_ui('redoc',
+    path('admin', admin.site.urls),
+    path('doc', schema_view.with_ui('redoc',
                                          cache_timeout=0), name="schema-redoc"),
     path('', include('bookmarks.urls')),
     path('', include('accounts.urls')),
 ]
+urlpatterns = [path('v1/', include(urlpatterns))]

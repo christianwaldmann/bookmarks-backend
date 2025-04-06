@@ -145,7 +145,12 @@ REST_FRAMEWORK = {
 }
 
 
-REST_KNOX = {'TOKEN_TTL': timedelta(weeks=2)}
+REST_KNOX = {
+    'TOKEN_TTL': timedelta(hours=24),
+    'AUTO_REFRESH': True, # reset token expiry on every use
+    'MIN_REFRESH_INTERVAL': 60,
+    'AUTO_REFRESH_MAX_TTL': timedelta(days=180), # force logout after half a year
+}
 
 
 LOGGING = {
